@@ -1,0 +1,232 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    color: #6c6c6c;
+}
+
+.form-table {
+    width: 100%;
+    padding: 10px 10px 0 0;
+}
+
+.form-table .form-group {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.form-table .form-group:before {
+    display: table;
+    content: " ";
+}
+
+.form-table .form-group:after {
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+.form-table .col-sm-3 {
+    width: 25%;
+    padding-top: 7px;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.form-table .col-sm-9 {
+    width: 75%
+}
+
+.form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.form-control,
+.single-line {
+    background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #e5e6e7;
+    border-radius: 1px;
+    color: inherit;
+    display: block;
+    padding: 6px 12px;
+    -webkit-transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+    font-size: 14px;
+}
+
+.col-sm-3,
+.col-sm-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+}
+ 
+.hr-line-dashed {
+    border-top: 1px dashed #e7eaec;
+    color: #ffffff;
+    background-color: #ffffff;
+    height: 1px;
+    margin: 20px 0;
+}
+
+
+/*图片上传*/
+
+.fileName {
+    width: 100%;
+    margin: 0 auto;
+}
+
+ul#show_upload {
+    overflow: hidden;
+    width: 100%;
+    float: left;
+}
+
+    ul#show_upload li {
+        width: 25%;
+        float: left;
+        list-style: none;
+        padding-left: 10px;
+    }
+
+ul#show_upload li .result_img {
+    position: relative;
+}
+
+ul#show_upload li .result_img i {
+    position: absolute;
+    right: 0;
+}
+
+ul#show_upload .fileName span {
+    width:95%;
+    line-height:20px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    padding-left:5px;
+    
+}
+
+ul#show_upload li .result_img .get_plusbg {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    width:100%;
+    height:20px;
+    line-height: 20px;
+    background-color: rgba(255,255,255,0.4);
+}
+ul#show_upload li .result_img .get_plus {
+    width: 16px;
+    height: 16px;
+    float:right;
+    margin:5px 0 10px 0;
+}
+    ul#show_upload li .result_img .thumbimg {
+        width: 90%;
+        height: 100px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 5px;
+    }
+    ul#show_upload #upload_button {
+        width: 90%;
+        height: 100px;
+        border: 1px solid #ddd;
+        float: left;
+        margin-top:5px;
+        position: relative;
+    }
+
+ul#show_upload #upload_button img {
+    width: 60px;
+    height: 60px;
+    vertical-align: middle;
+    line-height: 100px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+    ul#show_upload .del_img {
+        font-size: 11px;
+        color: #fff;
+        display: inline-block;
+        float: right;
+        height: 18px;
+        width: 18px;
+        line-height: 15px;
+        cursor: pointer;
+        position: absolute;
+        right: 0%;
+        top: -5px;
+        text-align: center;
+        background-color: #000;
+        opacity: 0.8;
+        border-radius: 50%;
+        border: 1px solid #000;
+    }
+
+.modal-footer {
+    width: 90%;
+    margin: 0 auto;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+
+/*按钮样式*/
+
+.btn {
+    font-family: "宋体";
+    font-size: 13px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+}
+
+.btn.btn-primary {
+    background-color: #1ab394;
+    border-color: #1ab394;
+    color: #FFF;
+}
+
+.btn.btn-white {
+    color: inherit;
+    background: white;
+    border: 1px solid #e7eaec;
+}
+
+input[type="text"]:disabled,
+extarea:disabled,
+input[type="number"]:disabled,
+select:disabled {
+    background-color: #f2f1f1;
+    border-color: #ddd;
+    color: #9c9c9c;
+    border: none;
+}
+
+
+

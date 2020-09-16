@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.message{
+    width: 960px;
+    margin: 0 auto;
+    background: #fdfdfd;
+    margin-top: 10px;
+    padding: 10px 15px 20px 15px;
+    box-shadow: 5px 0px 9px #DDDDDD;
+    border: 1px solid #ececec;
+    text-align:left;  /*水平居中*/
+	
+}
+
+h1 {
+    text-align: center;
+    color: #3C3C3C;
+    line-height: 32px;
+    font-size: 20px;
+    font-weight: 100;
+    background-color: #3385ff;
+    padding: 10px 0;
+    color: #FFFFFF;
+}
+
+p {
+	text-align:center;
+}
+
+.form {
+	
+}
