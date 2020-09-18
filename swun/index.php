@@ -31,7 +31,7 @@
 
 <body>
 <?php
-	$PHPid = session_id();
+	$id = $_SESSION['user'];
     $mysql_conf = array(
     'host'    => 'localhost',   // IP : 端口
     'db'      => 'message',   // 要连接的数据库
@@ -45,11 +45,10 @@ if ($mysqli -> connect_errno) {
 }
 
 $result = mysqli_query($mysqli,"SELECT * FROM message
-WHERE PHPid='$PHPid'");
+WHERE id='$id'");
 while($row = mysqli_fetch_array($result))
 {
 	$name = $row['name'];
-	$id = $row['id'];
 	$academy = $row['academy'];
 	$subject = $row['subject'];
 	$class = $row['class'];
@@ -77,7 +76,7 @@ $mysqli->close();
                         <div class="row">
                             <div class="th_left phone">请假原因：</div>
                             <div class="th_right phone">
-                                <label>事假</label>
+                                <label>病假</label>
                             </div>
                         </div>
                         <div class="row">
@@ -109,12 +108,12 @@ $mysqli->close();
             <nav id="cd-main-nav">
                 <ul>
                         <li>
-                            <a href="http://bsdt.swun.edu.cn/spcp/Web/">
+                            <a href="http://swun.loveviolet.cn/">
                                 <img src="icon1.png"> 返回首页
                             </a>
                         </li>
                                         <li>
-                        <a href="/SPCP/Web/Account/Logout">
+                        <a href="http://swun.loveviolet.cn/swun/404/404.html">
                             <img src="icon3.png"> 安全退出
                         </a>
                     </li>

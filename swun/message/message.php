@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="laydate.css" id="layuicss-laydate"></head>
 <body>
 <?php
-	$PHPid = session_id();
+	$id = $_SESSION['user'];
     $mysql_conf = array(
     'host'    => 'localhost',   // IP : 端口
     'db'      => 'message',   // 要连接的数据库
@@ -45,11 +45,10 @@ if ($mysqli -> connect_errno) {
 }
 
 $result = mysqli_query($mysqli,"SELECT * FROM message
-WHERE PHPid='$PHPid'");
+WHERE id='$id'");
 while($row = mysqli_fetch_array($result))
 {
 	$name = $row['name'];
-	$id = $row['id'];
 	$academy = $row['academy'];
 	$subject = $row['subject'];
 	$class = $row['class'];
@@ -178,14 +177,34 @@ $mysqli->close();
             <div class="row">
                 <div class="th_left phone">请假时长：</div>
                 <div class="th_right phone">
-                    <label id="LeaveCount" class="red"><?php echo intval($endItTime) - intval($beginTime);?>小时</label>
+                    <label id="LeaveCount" class="red">
+						<?php 
+						$dayans = substr($endItDay, -2) - substr($beginDay, -2);
+						$trueday = substr($endItDay, -2) - substr($beginDay, -2) - intval(1);
+						$timeans = intval($endItTime) - intval($beginTime);
+						$truetime = intval(24) - intval($beginTime) + intval($endItTime);
+						if($timeans < 0)
+						{
+							if($trueday > 0){
+								echo "{$trueday}天";
+							}
+							echo "{$truetime}小时";
+						}
+						else
+						{
+							if($dayans > 0){
+								echo "{$dayans}天";
+							}
+							echo "{$timeans}小时";
+						}
+						?></label>
                 </div>
             </div>
             <div class="row">
                 <div class="th_left phone"><span class="red">*</span>请假原因：</div>
                 <div class="th_right phone radio_list required validate">
-                            <input value="01011001" name="LeaveReason" type="radio" id="01011001"> <label for="01011001">&nbsp;病假</label>
-                            <input value="01011002" name="LeaveReason" type="radio" checked="checked" id="01011002"> <label for="01011002">&nbsp;事假</label>
+                            <input value="01011001" name="LeaveReason" type="radio" checked="checked" id="01011001"> <label for="01011001">&nbsp;病假</label>
+                            <input value="01011002" name="LeaveReason" type="radio" id="01011002"> <label for="01011002">&nbsp;事假</label>
                             <input value="01011003" name="LeaveReason" type="radio" id="01011003"> <label for="01011003">&nbsp;求职</label>
                             <input value="01011004" name="LeaveReason" type="radio" id="01011004"> <label for="01011004">&nbsp;培训</label>
                             <input value="01011005" name="LeaveReason" type="radio" id="01011005"> <label for="01011005">&nbsp;实习</label>
@@ -211,7 +230,7 @@ $mysqli->close();
             <div class="row">
                 <div class="th_left phone"><span class="red">*</span>外出地点：</div>
                 <div class="th_right phone">
-                    <input vtype="OutAddressStreet" class="validate required input-style" data-val="true" data-val-length="字段 OutAddressStreet 必须是最大长度为 100 的字符串。" data-val-length-max="100" id="OutAddressStreet" name="OutAddressStreet" type="text" value="">
+                    <input vtype="OutAddressStreet" class="validate required input-style" data-val="true" data-val-length="字段 OutAddressStreet 必须是最大长度为 100 的字符串。" data-val-length-max="100" id="OutAddressStreet" name="OutAddressStreet" type="text" value="双流区第一人民医院">
                 </div>
             </div>
             <div class="row">
@@ -250,13 +269,13 @@ $mysqli->close();
             <nav id="cd-main-nav">
                 <ul>
                         <li>
-                            <a href="/SPCP/Web/Account/ChooseSys">
-                                <img src="/SPCP/Web/Content/img/icon1.png"> 返回首页
+                            <a href="http://swun.loveviolet.cn/">
+                                <img src="icon1.png"> 返回首页
                             </a>
                         </li>
                                         <li>
-                        <a href="/SPCP/Web/Account/Logout">
-                            <img src="/SPCP/Web/Content/img/icon3.png"> 安全退出
+                        <a href="http://swun.loveviolet.cn/swun/404/404.html">
+                            <img src="icon3.png"> 安全退出
                         </a>
                     </li>
                 </ul>

@@ -1,6 +1,6 @@
 <!doctype html>
 <?php
-  session_start();//开启session会话
+session_start();
 ?>
 <html>
 <head>
@@ -10,7 +10,8 @@
 
 <body>
 	<?php
-	$PHPid = session_id();
+	$id = $_SESSION['user'];
+	$thisid = $_POST["id"];
     $mysql_conf = array(
     'host'    => 'localhost',   // IP : 端口
     'db'      => 'message',   // 要连接的数据库
@@ -25,21 +26,21 @@ if ($mysqli -> connect_errno) {
 	
 //写入数据
 $result = mysqli_query($mysqli,"SELECT * FROM message
-WHERE PHPid='$PHPid'");
+WHERE id='$thisid'");
 while($row = mysqli_fetch_array($result))
 {
-	$NOWid = $row['PHPid'];
+	$NOWid = $row['id'];
 }
-if($PHPid == $NOWid) {
+if($thisid == $NOWid) {
 	echo "已有原数据，删除中。。。";
-	$data = "DELETE FROM message WHERE PHPid='$PHPid'";
+	$data = "DELETE FROM message WHERE id='$thisid'";
 	if ($mysqli->query($data) === TRUE) {
 		echo "原纪录成功删除";
 	} 
 	else {
 		echo "Error";
 	}
-	$sql = "INSERT INTO message (PHPid, name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES('$_POST[PHPid]','$_POST[name]','$_POST[id]','$_POST[academy]','$_POST[subject]','$_POST[class]','$_POST[beginDay]','$_POST[beginTime]','$_POST[endItDay]','$_POST[endItTime]','$_POST[tel]')";
+	$sql = "INSERT INTO message (name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES('$_POST[name]','$_POST[id]','$_POST[academy]','$_POST[subject]','$_POST[class]','$_POST[beginDay]','$_POST[beginTime]','$_POST[endItDay]','$_POST[endItTime]','$_POST[tel]')";
 	if ($mysqli->query($sql) === TRUE) {
 		echo "新记录插入成功";
 	} 
@@ -48,7 +49,7 @@ if($PHPid == $NOWid) {
 	}
 }
 else{
-	$sql = "INSERT INTO message (PHPid, name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES('$_POST[PHPid]','$_POST[name]','$_POST[id]','$_POST[academy]','$_POST[subject]','$_POST[class]','$_POST[beginDay]','$_POST[beginTime]','$_POST[endItDay]','$_POST[endItTime]','$_POST[tel]')";
+	$sql = "INSERT INTO message (name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES('$_POST[name]','$_POST[id]','$_POST[academy]','$_POST[subject]','$_POST[class]','$_POST[beginDay]','$_POST[beginTime]','$_POST[endItDay]','$_POST[endItTime]','$_POST[tel]')";
 	if ($mysqli->query($sql) === TRUE) {
 		echo "新记录插入成功";
 	} 
