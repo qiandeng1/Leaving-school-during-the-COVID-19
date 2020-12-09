@@ -44,9 +44,9 @@ if ($mysqli -> connect_errno) {
     die("could not connect to the database:\n" . $mysqli->connect_error);//诊断连接错误
 }
 
-$result = mysqli_query($mysqli,"SELECT * FROM message
-WHERE id='$id'");
-while($row = mysqli_fetch_array($result))
+$sql = "SELECT * FROM messgae WHERE id='$id'";
+$result = mysqli_query($mysqli,$sql);
+if($row = mysqli_fetch_assoc($result))
 {
 	$name = $row['name'];
 	$academy = $row['academy'];
