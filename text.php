@@ -25,12 +25,12 @@ if ($mysqli -> connect_errno) {
 }
 	
 //写入数据
-$result = mysqli_query($mysqli,"SELECT * FROM message
-WHERE id='$thisid'");
-while($row = mysqli_fetch_array($result))
-{
+$sql = "SELECT * FROM id WHERE id='$thisid'";
+$result = mysqli_query($mysqli,$sql); 
+if($row = mysqli_fetch_assoc($result)){
 	$NOWid = $row['id'];
 }
+	
 if($thisid == $NOWid) {
 	echo "已有原数据，删除中。。。";
 	$data = "DELETE FROM message WHERE id='$thisid'";
@@ -40,7 +40,7 @@ if($thisid == $NOWid) {
 	else {
 		echo "Error";
 	}
-	$sql = "INSERT INTO message (name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES('$_POST[name]','$_POST[id]','$_POST[academy]','$_POST[subject]','$_POST[class]','$_POST[beginDay]','$_POST[beginTime]','$_POST[endItDay]','$_POST[endItTime]','$_POST[tel]')";
+	$sql = "INSERT INTO messgae (name, id, academy, subject, class, beginDay, beginTime, endItDay, endItTime, tel) VALUES ('$_POST[name]', '$_POST[id]', '$_POST[academy]', '$_POST[subject]', '$_POST[class]', '$_POST[beginDay]', '$_POST[beginTime]', '$_POST[endItDay]', '$_POST[endItTime]', '$_POST[tel]');";
 	if ($mysqli->query($sql) === TRUE) {
 		echo "新记录插入成功";
 	} 
